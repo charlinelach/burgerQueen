@@ -11,3 +11,5 @@ CREATE TABLE burger (
     devoured BOOLEAN DEFAULT false,
     PRIMARY KEY (id)
 );
+
+-- Could not connect DB to Heroku. JawsDB MySQL did not work, regardless the number of attempts
