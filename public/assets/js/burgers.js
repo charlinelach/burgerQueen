@@ -2,27 +2,24 @@
 $(function() {
   $(".change-burger").on("click", function(event) {
     let id = $(this).data("id");
-    let newBurger = $(this).data("newBurger");
+    let newEat = $(this).data("neweat");
 
-    let newBurgerState = {
-      devoured: newBurger
+    let newEatState = {
+      devoured: newEat
     };
 
-    // Send the PUT request.
     $.ajax("/api/burger/" + id, {
       type: "PUT",
-      data: newBurgerState
+      data: newEatState
     }).then(
       function() {
         console.log("changed eatery to", newEat);
-        // Reload the page to get the updated list
         location.reload();
       }
     );
   });
 
   $(".create-form").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     let newBurger = {
@@ -30,14 +27,13 @@ $(function() {
       devoured: $("[name=devoured]:checked").val().trim()
     };
 
-    // Send the POST request.
     $.ajax("/api/burger", {
       type: "POST",
       data: newBurger
     }).then(
       function() {
         console.log("created new burger");
-        // Reload the page to get the updated list
+        // Automatically reload the page to get the updated list
         location.reload();
       }
     );
@@ -46,13 +42,13 @@ $(function() {
   $(".delete-burger").on("click", function(event) {
     let id = $(this).data("id");
 
-    // Send the DELETE request.
+    // If a user hit the unnecessary DELETE button, then it would remove the item off the table
     $.ajax("/api/burgers/" + id, {
       type: "DELETE"
     }).then(
       function() {
         console.log("deleted burger", id);
-        // Reload the page to get the updated list
+        // Automatically reload the page to get the updated list
         location.reload();
       }
     );
