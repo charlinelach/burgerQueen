@@ -14,3 +14,4 @@ CREATE TABLE burger (
 );
 
 -- Could not connect DB to Heroku. JawsDB MySQL did not work, regardless the number of attempts
+-- 11/17: Made JAWS DB work
